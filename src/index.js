@@ -1,26 +1,25 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // your code here
-  let form=document.querySelector('form')
-  form.addEventListener('submit',(e)=>{
-    e.preventDefault()
-    createTask(e.target.new-task-description.value)
-    form.reset()
-  })
-});
-function createTask(task){
-  let li = document.createElement("li")
-  let btn = document.createElement('button')
-  btn.addEventListener('click',handleDelete)
-  btn.textContent='x'
-  li.textContent=task
-  li.appendChild(btn)
-  console.log('li')
-  document.querySelector('#tasks').appendChild('li')
-  
- 
-  
-  
-}
-function handleDelete(e){
-  e.target.parentNode.remove()
-}
+
+const form = document.querySelector("form");
+   form.addEventListener("submit", (event) => {
+     event.preventDefault();
+     const inputValue = form.querySelector("#new-task-description").value;
+     submitTodo(inputValue)
+   });
+
+ const submitTodo = (todo) => {
+   const ul = document.querySelector("#tasks")
+   const li = document.createElement("li");
+   const btn = document.createElement("button");
+   const select = document.createElement("select");
+   const option = document.createElement("option");
+   select.appendChild(option);
+   option.append(li);
+   btn.addEventListener("click", deleteList)
+   btn.innerHTML = "<strong>DELETE</strong>";
+   li.textContent =`${todo} `;
+   li.appendChild(btn)
+   ul.appendChild(select);
+ }
+ const deleteList = (event) => {
+    event.target.parentNode.parentNode.remove();
+ }
