@@ -6,7 +6,7 @@ const form = document.querySelector("form");
      submitTodo(inputValue)
    });
 
- const submitTodo = (todo) => {
+ const submitTodo = (task) => {
    const ul = document.querySelector("#tasks")
    const li = document.createElement("li");
    const btn = document.createElement("button");
@@ -16,7 +16,7 @@ const form = document.querySelector("form");
    option.append(li);
    btn.addEventListener("click", deleteList)
    btn.innerHTML = "<strong>DELETE</strong>";
-   li.textContent =`${todo} `;
+   li.textContent =`${task} `;
    li.appendChild(btn)
    ul.appendChild(select);
  }
